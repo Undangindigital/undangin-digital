@@ -24,4 +24,48 @@ document.getElementById('year').textContent=new Date().getFullYear();
 document.querySelectorAll('.choose').forEach(b=>b.addEventListener('click',()=>{document.getElementById('design').value=b.dataset.design;document.getElementById('pesan').scrollIntoView({behavior:'smooth'});}));
 document.querySelectorAll('.choose-package').forEach(b=>b.addEventListener('click',()=>{document.getElementById('package').value=b.dataset.package;document.getElementById('pesan').scrollIntoView({behavior:'smooth'});}));
 document.getElementById('orderForm').addEventListener('submit',e=>{e.preventDefault();const v=id=>document.getElementById(id).value.trim();const msg=`Halo Undangin Digital, saya ingin memesan undangan.\n\nNama: ${v('name1')}\nPasangan: ${v('name2')||'-'}\nJenis acara: ${v('event')}\nPaket: ${v('package')}\nDesain: ${v('design')}\nTanggal: ${v('date')}\nWaktu: ${v('time')||'-'}\nTempat: ${v('place')||'-'}\nAlamat: ${v('address')||'-'}\nWhatsApp pelanggan: ${v('contact')}\nCatatan: ${v('notes')||'-'}\n\nMohon info langkah selanjutnya.`,status=document.getElementById('status');if(WA_ADMIN==='6281234567890'){status.style.display='block';status.textContent='PENTING: nomor WhatsApp admin masih contoh. Ubah WA_ADMIN di bagian kode sebelum digunakan.';return;}window.open('https://wa.me/'+WA_ADMIN+'?text='+encodeURIComponent(msg),'_blank','noopener');});
-</script></body></html>
+</script></body>
+<!-- PEMBAYARAN UNDANGIN DIGITAL -->
+<section id="pembayaran" style="display:none;max-width:600px;margin:30px auto;padding:24px;background:#f8f3e9;border-radius:16px;color:#333;font-family:Arial,sans-serif;">
+  <h2 style="text-align:center;color:#47634f;">Pembayaran Undangin Digital</h2>
+  <p>Terima kasih sudah memesan undangan. Silakan pilih metode pembayaran berikut.</p>
+
+  <div style="background:white;padding:16px;border-radius:12px;margin:16px 0;">
+    <h3>Transfer Bank Permata</h3>
+    <p>Nama pemilik: <strong>HASBI SIDIQ</strong></p>
+    <p>Nomor rekening: <strong>1240941658</strong></p>
+  </div>
+
+  <div style="background:white;padding:16px;border-radius:12px;margin:16px 0;">
+    <h3>DANA</h3>
+    <p>Nama akun: <strong>HASBI SIDIQ</strong></p>
+    <p>Nomor DANA: <strong>085353102733</strong></p>
+  </div>
+
+  <p>Transfer sesuai total pesanan. Setelah membayar, konfirmasikan melalui WhatsApp. Pesanan diproses setelah pembayaran diverifikasi.</p>
+
+  <button type="button" onclick="konfirmasiPembayaran()" style="width:100%;padding:14px;background:#47634f;color:white;border:0;border-radius:8px;font-size:16px;">
+    Konfirmasi Pembayaran via WhatsApp
+  </button>
+</section>
+
+<script>
+function tampilkanPembayaran() {
+  const bagian = document.getElementById('pembayaran');
+  if (bagian) {
+    bagian.style.display = 'block';
+    bagian.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function konfirmasiPembayaran() {
+  const nomorAdmin = '6285353102733;
+  const pesan = 'Halo Undangin Digital, saya ingin mengonfirmasi pembayaran pesanan undangan. Mohon bantu verifikasi.';
+  window.open(
+    'https://wa.me/' + nomorAdmin + '?text=' + encodeURIComponent(pesan),
+    '_blank'
+  );
+}
+</script>
+</body>
+</html>
